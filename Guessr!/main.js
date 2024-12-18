@@ -12,23 +12,33 @@ function randomNumber(maximum) {
   return number;
 }
 function guessHistory(user, computer, greater, all, lower) {
-  if (user > computer) {
-    greater.push(DOMSelectors.guess.value);
+  if (user.value > computer) {
+    greater.push(user.value);
   }
-  if (user != computer) {
-    all.push(DOMSelectors.guess.value);
+  if (user.value != computer) {
+    all.push(user.value);
   }
-  if (user < computer) {
-    lower.push(DOMSelectors.guess.value);
+  if (user.value < computer) {
+    lower.push(user.value);
   }
-  userValue = "";
 }
-
+console.log(computerNumber);
 DOMSelectors.submit.addEventListener("click", function () {
-  console.log(computerNumber);
   if (DOMSelectors.guess.value != computerNumber) {
-    console.log(DOMSelectors.guess.value);
-    DOMSelectors.guess.innerHTML = "";
+    guessHistory(
+      DOMSelectors.guess,
+      computerNumber,
+      highGuesses,
+      allGuesses,
+      lowGuesses
+    );
+
+    DOMSelectors.guess.value = "";
+    console.log(highGuesses);
+    console.log(allGuesses);
+    console.log(lowGuesses);
   }
-  console.log(allGuesses);
+  if ((DOMSelectors.guess.value = computerNumber)) {
+    console.log("Win!");
+  }
 });
