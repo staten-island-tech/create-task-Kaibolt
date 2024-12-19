@@ -6,7 +6,7 @@ const computerNumber = randomNumber(35);
 let highGuesses = [];
 let allGuesses = [];
 let lowGuesses = [];
-
+let userGuess = DOMSelectors.guess;
 function randomNumber(maximum) {
   const number = Math.floor(Math.random() * maximum + 1);
   return number;
@@ -23,22 +23,30 @@ function guessHistory(user, computer, greater, all, lower) {
   }
 }
 console.log(computerNumber);
-DOMSelectors.submit.addEventListener("click", function () {
-  if (DOMSelectors.guess.value != computerNumber) {
-    guessHistory(
-      DOMSelectors.guess,
-      computerNumber,
-      highGuesses,
-      allGuesses,
-      lowGuesses
-    );
 
-    DOMSelectors.guess.value = "";
+//for (let i = 0; i != 10; ) {
+
+while (i != 10) {
+  DOMSelectors.submit.addEventListener("click", function () {
+    if (userGuess.value != computerNumber) {
+      guessHistory(
+        userGuess,
+        computerNumber,
+        highGuesses,
+        allGuesses,
+        lowGuesses
+      );
+      //      i++;
+      userGuess.value = "";
+    } else {
+      console.log("Win");
+      //      i = 10;
+    }
+    //  console.log(i);
     console.log(highGuesses);
     console.log(allGuesses);
     console.log(lowGuesses);
-  }
-  if ((DOMSelectors.guess.value = computerNumber)) {
-    console.log("Win!");
-  }
-});
+    i++;
+  });
+  //}
+}
