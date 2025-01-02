@@ -1,6 +1,11 @@
 const DOMSelectors = {
   guess: document.querySelector("#userInput"),
   submit: document.querySelector("#submitGuess"),
+  highGuess: document.querySelector("#hG"),
+  allGuess: document.querySelector("#aG"),
+  lowGuess: document.querySelector("#lG"),
+  winStatus: document.querySelector("#status"),
+  guessStatus: document.querySelector("#gS"),
 };
 const computerNumber = randomNumber(35);
 let highGuesses = [];
@@ -23,27 +28,27 @@ function guessHistory(user, computer, greater, all, lower) {
     lowGuesses.push(user.value);
   }
 }
-console.log(computerNumber);
-
-//for (let i = 0; i != 10; ) {
-
+function updateHTML(x) {
+  DOMSelectors.highGuess.innerHTML = "High Guesses: " + `${highGuesses}`;
+  DOMSelectors.allGuess.innerHTML = "Guess History: " + `${allGuesses}`;
+  DOMSelectors.lowGuess.innerHTML = "Low Guesses: " + `${lowGuesses}`;
+  DOMSelectors.guessStatus.innerHTML = "Attempts: " + (10 - x);
+}
+console.log("Dont even try cheating, the answer isn't here.");
 DOMSelectors.submit.addEventListener("click", function () {
   while (attempts < 10) {
-    console.log("attempts " + attempts);
     if (userGuess.value != computerNumber) {
       guessHistory(userGuess, computerNumber);
-      userGuess.value = "";
       attempts++;
+      updateHTML(attempts);
+      userGuess.value = "";
+      console.log("attempts " + attempts);
+      break;
     } else {
       console.log("Win");
-      attempts = 10;
-      //      i = 10;
+      DOMSelectors.winStatus.innerHTML = "Win Status: Win!";
+      attempts = 11;
+      break;
     }
-    //  console.log(i);
-    console.log(highGuesses);
-    console.log(allGuesses);
-    console.log(lowGuesses);
-    console.log("attempts " + attempts);
   }
 });
-//}

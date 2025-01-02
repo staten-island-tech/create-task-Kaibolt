@@ -12,16 +12,18 @@
   <h1>Guessr!</h1>
   <h3>Guessr is a number guessing game where users can choose a number from 1 to 35 until they guess the correct number.
   </h3>
+  <h3>Failure to input a valid number will result in a loss of attempts.</h3>
   <br>
   <input type="text" id="userInput" placeholder="Input Guess Here"> <button id="submitGuess">Submit Guess</button>
   <br>
   <div>
-    <h2>Win Status: </h2>
+    <h2 id="status">Win Status: False</h2>
   </div>
 
-  <h2>High Guesses:</h2>
-  <h2>Guess History:</h2>
-  <h2>Low Guesses</h2>
+  <h2 id="hG">High Guesses: N/A</h2>
+  <h2 id="aG">Guess History: N/A</h2>
+  <h2 id="lG">Low Guesses: N/A</h2>
+  <h2 id="gS">Attempts: 10</h2>
   <script type="module" src="main.js"></script>
 </body>
 
