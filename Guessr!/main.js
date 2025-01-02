@@ -27,21 +27,23 @@ console.log(computerNumber);
 
 //for (let i = 0; i != 10; ) {
 
-while (attempts < 10) {
-  DOMSelectors.submit.addEventListener("click", function () {
+DOMSelectors.submit.addEventListener("click", function () {
+  while (attempts < 10) {
+    console.log("attempts " + attempts);
     if (userGuess.value != computerNumber) {
       guessHistory(userGuess, computerNumber);
       userGuess.value = "";
       attempts++;
     } else {
       console.log("Win");
+      attempts = 10;
       //      i = 10;
     }
     //  console.log(i);
     console.log(highGuesses);
     console.log(allGuesses);
     console.log(lowGuesses);
-    i++;
-  });
-  //}
-}
+    console.log("attempts " + attempts);
+  }
+});
+//}
