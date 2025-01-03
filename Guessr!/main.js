@@ -17,7 +17,7 @@ function randomNumber(maximum) {
   const number = Math.floor(Math.random() * maximum + 1);
   return number;
 }
-function guessHistory(user, computer, greater, all, lower) {
+function guessHistory(user, computer) {
   if (user.value > computer) {
     highGuesses.push(user.value);
   }
