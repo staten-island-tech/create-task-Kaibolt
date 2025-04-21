@@ -32,24 +32,6 @@ function guessHistory(user, computer) {
   }
 }
 
-function updateHTML(x) {
-  DOMSelectors.highGuess.innerHTML = "High Guesses: " + `${highGuesses}`;
-  DOMSelectors.allGuess.innerHTML = "Guess History: " + `${allGuesses}`;
-  DOMSelectors.lowGuess.innerHTML = "Low Guesses: " + `${lowGuesses}`;
-  DOMSelectors.guessStatus.innerHTML = "Attempts: " + (10 - x);
-}
-
-function gameRestart() {
-  attempts = 0;
-  highGuesses = [];
-  allGuesses = [];
-  lowGuesses = [];
-  computerNumber = randomNumber(35);
-  updateHTML(attempts);
-  DOMSelectors.winStatus.innerHTML = "Win Status: False";
-  userGuess.value = "";
-}
-
 console.log("Dont even try cheating, the answer isn't here.");
 
 DOMSelectors.submit.addEventListener("click", function () {
@@ -57,7 +39,10 @@ DOMSelectors.submit.addEventListener("click", function () {
     if (userGuess.value != computerNumber) {
       guessHistory(userGuess, computerNumber);
       attempts++;
-      updateHTML(attempts);
+      DOMSelectors.highGuess.innerHTML = "High Guesses: " + `${highGuesses}`;
+      DOMSelectors.allGuess.innerHTML = "Guess History: " + `${allGuesses}`;
+      DOMSelectors.lowGuess.innerHTML = "Low Guesses: " + `${lowGuesses}`;
+      DOMSelectors.guessStatus.innerHTML = "Attempts: " + (10 - attempts);
       userGuess.value = "";
       console.log("attempts " + attempts);
       break;
@@ -71,5 +56,15 @@ DOMSelectors.submit.addEventListener("click", function () {
 });
 
 document.querySelector("#restart").addEventListener("click", function () {
-  gameRestart();
+  attempts = 0;
+  highGuesses = [];
+  allGuesses = [];
+  lowGuesses = [];
+  computerNumber = randomNumber(35);
+  DOMSelectors.highGuess.innerHTML = "High Guesses: " + `${highGuesses}`;
+  DOMSelectors.allGuess.innerHTML = "Guess History: " + `${allGuesses}`;
+  DOMSelectors.lowGuess.innerHTML = "Low Guesses: " + `${lowGuesses}`;
+  DOMSelectors.guessStatus.innerHTML = "Attempts: " + (10 - attempts);
+  DOMSelectors.winStatus.innerHTML = "Win Status: False";
+  userGuess.value = "";
 });
