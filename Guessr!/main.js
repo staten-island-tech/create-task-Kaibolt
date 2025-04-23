@@ -61,7 +61,7 @@ DOMSelectors.submit.addEventListener("click", function () {
   );
   if (won == 1) {
     console.log("You win!");
-    DOMSelectors.winStatus.innerHTML("You have won!");
+    DOMSelectors.winStatus.innerHTML = "Win Status: Win!";
   }
 });
 
