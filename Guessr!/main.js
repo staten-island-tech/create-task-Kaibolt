@@ -32,26 +32,36 @@ function guessHistory(user, computer) {
   }
 }
 
-console.log("Dont even try cheating, the answer isn't here.");
-
-DOMSelectors.submit.addEventListener("click", function () {
+function gamePlay(high, all, low, Gstatus) {
   while (attempts < 10) {
     if (userGuess.value != computerNumber) {
       guessHistory(userGuess, computerNumber);
       attempts++;
-      DOMSelectors.highGuess.innerHTML = "High Guesses: " + `${highGuesses}`;
-      DOMSelectors.allGuess.innerHTML = "Guess History: " + `${allGuesses}`;
-      DOMSelectors.lowGuess.innerHTML = "Low Guesses: " + `${lowGuesses}`;
-      DOMSelectors.guessStatus.innerHTML = "Attempts: " + (10 - attempts);
+      high.innerHTML = "High Guesses: " + `${highGuesses}`;
+      all.innerHTML = "Guess History: " + `${allGuesses}`;
+      low.innerHTML = "Low Guesses: " + `${lowGuesses}`;
+      Gstatus.innerHTML = "Attempts: " + (10 - attempts);
       userGuess.value = "";
       console.log("attempts " + attempts);
       break;
     } else {
-      console.log("Win");
-      DOMSelectors.winStatus.innerHTML = "Win Status: Win!";
       attempts = 11;
-      break;
+      return (won = 1);
     }
+  }
+}
+console.log("Dont even try cheating, the answer isn't here.");
+let won = 0;
+DOMSelectors.submit.addEventListener("click", function () {
+  gamePlay(
+    DOMSelectors.highGuess,
+    DOMSelectors.allGuess,
+    DOMSelectors.lowGuess,
+    DOMSelectors.guessStatus
+  );
+  if (won == 1) {
+    console.log("You win!");
+    DOMSelectors.winStatus.innerHTML("You have won!");
   }
 });
 
